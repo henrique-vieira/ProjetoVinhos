@@ -1,0 +1,26 @@
+package com.vibratecnologia.vinhos.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.vibratecnologia.vinhos.model.TipoVinho;
+import com.vibratecnologia.vinhos.model.Vinho;
+
+@Controller
+public class VinhosController {
+	
+	@GetMapping("/novo")
+	public String novo(Model model){
+		model.addAttribute(new Vinho());
+		model.addAttribute("tipos", TipoVinho.values());
+		return "vinho/cadastro-vinho"; //precisa estar dentro da pasta template
+	}
+	
+	@PostMapping("/vinhos/novo")
+	public String salvar(Vinho vinho){
+		//salvar um objeto vinho...
+		return "";
+	}
+}

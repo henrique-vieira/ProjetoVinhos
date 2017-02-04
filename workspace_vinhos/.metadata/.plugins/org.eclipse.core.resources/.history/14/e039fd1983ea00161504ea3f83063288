@@ -1,0 +1,32 @@
+package com.vibratecnologia.vinhos.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.vibratecnologia.vinhos.model.TipoVinho;
+import com.vibratecnologia.vinhos.model.Vinho;
+import com.vibratecnologia.vinhos.repository.Vinhos;
+
+@Controller
+public class VinhosController {
+	
+	@Autowired //o spring procura qual é a implementação de "vinhos" e injeta essa dependência para não precisar ficar instanciando um novo objeto sempre
+	private Vinhos vinhos;/*Vem da Interface repository "Vinhos", que permite ao controlador
+	                        realizar as opções de CRUD*/
+	
+	@GetMapping("/vinhos/novo")
+	public String novo(Model model){
+		model.addAttribute(new Vinho());
+		model.addAttribute("tipos", TipoVinho.values());
+		return "vinho/cadastro-vinho"; //precisa estar dentro da pasta template
+	}
+	
+	@PostMapping("/vinhos/novo")
+	public String salvar(Vinho vinho){
+		vinhos.save(vinho); /*O controlador agora pode acessar os métodos de CRUD da interface "Vinhos"*/
+		return "redirect:/vinhos/novo";
+	}
+}
