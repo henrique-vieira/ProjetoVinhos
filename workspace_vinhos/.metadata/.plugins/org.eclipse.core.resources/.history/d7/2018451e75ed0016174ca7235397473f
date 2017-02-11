@@ -1,0 +1,5 @@
+package com.vibratecnologia.vinhos.repository.filter;
+
+public class VinhoFilter {
+
+}

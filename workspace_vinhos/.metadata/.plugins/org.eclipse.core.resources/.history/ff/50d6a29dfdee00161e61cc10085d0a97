@@ -1,0 +1,5 @@
+package com.vibratecnologia.vinhos.controller;
+
+public class SegurancaController {
+
+}

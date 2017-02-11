@@ -1,0 +1,5 @@
+package com.vibratecnologia.vinhos.config;
+
+public class SecurityConfig {
+
+}
